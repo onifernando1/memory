@@ -2,12 +2,23 @@ import React from "react";
 import Card from "./Card";
 
 function Overview() {
-  const cards = ["ba", "haa", "jilm"];
+  let cards = ["ba", "haa", "jilm"];
+
+  const generateRandomNumber = (max) => {
+    let answer = Math.floor(Math.random() * max);
+    console.log(answer);
+  };
+
+  generateRandomNumber(3);
+
+  const shuffleCards = (cards) => {
+    let newCards = [];
+  };
 
   return (
     <div>
-      {cards.map((card) => (
-        <Card name={card} />
+      {cards.map((card, index) => (
+        <Card name={card} id={index} />
       ))}
     </div>
   );
