@@ -1,9 +1,11 @@
 import React from "react";
 
-function Card() {
-  const greeting = "Hello Function Component!";
-
-  return <h1>{greeting}</h1>;
+function Card(props) {
+  return (
+    <div>
+      <img src={require(`../img/${props.name}.png`)} alt="writing"></img>
+      <div>Hello</div>
+    </div>
+  );
 }
-
 export default Card;
