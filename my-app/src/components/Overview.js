@@ -26,7 +26,9 @@ function Overview() {
 
   return (
     <div>
-      {cards}
+    {cards.map(card =>{
+      return <Card name = {card}/>
+    })}
     </div>
   );
 }
