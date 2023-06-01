@@ -12,26 +12,21 @@ function Overview() {
   generateRandomNumber(3);
 
   const shuffleCards = (cards) => {
-    // for (let i = 0; i < cards.length; i++) {
+    for (let i = 0; i < cards.length; i++) {
     console.log(cards);
     let randomIndex = generateRandomNumber(cards.length);
     let original = cards[i];
     cards[i] = cards[randomIndex];
     cards[randomIndex] = original;
     console.log(cards);
-    // }
-    // console.log(cards);
-    // console.log(cards);
-    // console.log(cards);
+    }
   };
 
   shuffleCards(cards);
 
   return (
     <div>
-      {/* {cards.map((card, index) => (
-        <Card name={card} id={index} />
-      ))} */}
+      {cards}
     </div>
   );
 }
