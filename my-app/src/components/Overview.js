@@ -1,15 +1,19 @@
 import React from "react";
 import Card from "./Card";
 import { useState } from 'react';
+import Scoreboard from "./Scoreboard";
 
 
 
 function Overview() {
   const [allSelected, setAllSelected] =useState(false)
 
+  const [score,setScore] = useState(0)
+
+  const [previouslySelected, setPreviouslySelected] = useState([])
+
 
   let cards =["ب","ج","د","ه","و","ز","ح","ط","ي","ك","ل","م","ن","س","ع","ف"]
-  let previouslySelected = []
   
 
   const generateRandomNumber = (max) => {
@@ -20,18 +24,18 @@ function Overview() {
 
   const shuffleCards = (cards) => {
     for (let i = 0; i < cards.length; i++) {
-    console.log(cards);
     let randomIndex = generateRandomNumber(cards.length);
     let original = cards[i];
     cards[i] = cards[randomIndex];
     cards[randomIndex] = original;
-    console.log(cards);
     }
   };
   
   const selectCard = (card)=>{
    if (previouslySelected.includes(card) == false) {
-    previouslySelected.push(card)
+    setPreviouslySelected(previouslySelected=>[...previouslySelected, card])
+    setScore(score + 1 )
+    console.log(previouslySelected)
    } else {
     setAllSelected(true)
     alert("OH NO!")
@@ -42,10 +46,13 @@ function Overview() {
   shuffleCards(cards);
 
   return (
-    <div className="overview">
-    {cards.map(card =>{
-      return <div onClick = {()=>{selectCard(card)}} className="card"><Card name = {card}/></div>
-    })}
+    <div>
+      <Scoreboard score={score}/>
+      <div className="overview">
+      {cards.map(card =>{
+        return <div onClick = {()=>{selectCard(card)}} className="card"><Card name = {card}/></div>
+      })}
+      </div>
     </div>
   );
 }

@@ -1,9 +1,8 @@
 import React from "react";
 
-function Scoreboard() {
-  const greeting = "Hello Function Component!";
+function Scoreboard(props) {
 
-  return <h1>{greeting}</h1>;
+  return <div>{props.score}</div>
 }
 
 export default Scoreboard;
