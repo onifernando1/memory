@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "./components/Card";
 import Overview from "./components/Overview";
+import "./styles.css"
 
 function App() {
   return (
