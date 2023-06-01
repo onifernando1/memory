@@ -11,7 +11,7 @@ function Overview() {
 
   const [highScore, setHighScore] = useState(0);
 
-  let cards = [
+  const [cards, setCards] = useState([
     "ب",
     "ج",
     "د",
@@ -28,7 +28,30 @@ function Overview() {
     "س",
     "ع",
     "ف",
-  ];
+  ]);
+
+  useEffect(() => {
+    shuffleCards(cards);
+  }, [score]);
+
+  // let cards = [
+  //   "ب",
+  //   "ج",
+  //   "د",
+  //   "ه",
+  //   "و",
+  //   "ز",
+  //   "ح",
+  //   "ط",
+  //   "ي",
+  //   "ك",
+  //   "ل",
+  //   "م",
+  //   "ن",
+  //   "س",
+  //   "ع",
+  //   "ف",
+  // ];
 
   const generateRandomNumber = (max) => {
     let answer = Math.floor(Math.random() * max);
@@ -36,12 +59,14 @@ function Overview() {
   };
 
   const shuffleCards = (cards) => {
-    for (let i = 0; i < cards.length; i++) {
-      let randomIndex = generateRandomNumber(cards.length);
-      let original = cards[i];
-      cards[i] = cards[randomIndex];
-      cards[randomIndex] = original;
+    let tempCards = cards;
+    for (let i = 0; i < tempCards.length; i++) {
+      let randomIndex = generateRandomNumber(tempCards.length);
+      let original = tempCards[i];
+      tempCards[i] = tempCards[randomIndex];
+      tempCards[randomIndex] = original;
     }
+    setCards(tempCards);
   };
 
   const updateHighScore = () => {
@@ -63,7 +88,7 @@ function Overview() {
     }
   };
 
-  shuffleCards(cards);
+  // shuffleCards(cards);
 
   return (
     <div>
