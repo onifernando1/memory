@@ -6,20 +6,32 @@ function Overview() {
 
   const generateRandomNumber = (max) => {
     let answer = Math.floor(Math.random() * max);
-    console.log(answer);
+    return answer;
   };
 
   generateRandomNumber(3);
 
   const shuffleCards = (cards) => {
-    let newCards = [];
+    // for (let i = 0; i < cards.length; i++) {
+    console.log(cards);
+    let randomIndex = generateRandomNumber(cards.length);
+    let original = cards[i];
+    cards[i] = cards[randomIndex];
+    cards[randomIndex] = original;
+    console.log(cards);
+    // }
+    // console.log(cards);
+    // console.log(cards);
+    // console.log(cards);
   };
+
+  shuffleCards(cards);
 
   return (
     <div>
-      {cards.map((card, index) => (
+      {/* {cards.map((card, index) => (
         <Card name={card} id={index} />
-      ))}
+      ))} */}
     </div>
   );
 }
