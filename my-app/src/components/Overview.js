@@ -70,7 +70,9 @@ function Overview() {
   };
 
   const updateHighScore = () => {
-    setHighScore(score);
+    if (score > highScore) {
+      setHighScore(score);
+    }
   };
 
   const selectCard = (card) => {
@@ -84,7 +86,9 @@ function Overview() {
     } else {
       setAllSelected(true);
       updateHighScore();
-      alert(`Highscore:${highScore}`);
+      setScore(0);
+      setPreviouslySelected([]);
+      alert("You lose!");
     }
   };
 
