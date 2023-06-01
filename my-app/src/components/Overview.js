@@ -1,9 +1,16 @@
 import React from "react";
 import Card from "./Card";
+import { useState } from 'react';
+
+
 
 function Overview() {
-  // let cards = ["alif","ba","dad","dal","dhal","ha","haa","jilm","kha","ra","sad","shin","sin","ta","taa","za"];
+  const [allSelected, setAllSelected] =useState(false)
+
+
   let cards =["ب","ج","د","ه","و","ز","ح","ط","ي","ك","ل","م","ن","س","ع","ف"]
+  let previouslySelected = []
+  
 
   const generateRandomNumber = (max) => {
     let answer = Math.floor(Math.random() * max);
@@ -22,6 +29,14 @@ function Overview() {
     }
   };
   
+  const selectCard = (card)=>{
+   if (previouslySelected.includes(card) == false) {
+    previouslySelected.push(card)
+   } else {
+    setAllSelected(true)
+    alert("OH NO!")
+   }
+  }
   
 
   shuffleCards(cards);
@@ -29,7 +44,7 @@ function Overview() {
   return (
     <div className="overview">
     {cards.map(card =>{
-      return <div className="card"><Card name = {card}/></div>
+      return <div onClick = {()=>{selectCard(card)}} className="card"><Card name = {card}/></div>
     })}
     </div>
   );
